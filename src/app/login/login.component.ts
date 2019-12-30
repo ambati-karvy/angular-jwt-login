@@ -28,10 +28,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.authanticationService.login1()
-      
-    
   }
 
 }

@@ -1,17 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
+import {  Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthanticationService {
+export class AuthanticationService implements OnInit{
 
   private currentUserSubject: BehaviorSubject<string>;
   public currentUser: Observable<string>;
 
-  constructor(private httpClient:HttpClient) { 
+  constructor(private httpClient:HttpClient,private router: Router) { 
+    this.currentUserSubject = new BehaviorSubject<string>(localStorage.getItem('currentUser'));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  ngOnInit() {
     this.currentUserSubject = new BehaviorSubject<string>(localStorage.getItem('currentUser'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -58,7 +64,11 @@ export class AuthanticationService {
     this.httpClient.post("http://localhost:8080/login",formDate,{observe:'response',responseType: 'text'})
     .subscribe(resp => {
       //console.log(resp.headers.get('Content-Length'));
-      localStorage.setItem('currentUser',resp.headers.get('Authorization'))
+      if(resp.ok) {
+        localStorage.setItem('currentUser',resp.headers.get('Authorization'))
+        this.currentUserSubject.next(resp.headers.get('Authorization'));
+        this.router.navigate(['/']);
+      }
     });
     
     // .pipe(map(res => {
