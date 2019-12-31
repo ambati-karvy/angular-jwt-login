@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthanticationService } from '../authantication.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+
+  time = new Observable<string>(observer => {
+                  
+    setInterval(() => observer.next(new Date().toString()),1000)
+  });
 
   name:string;
   roles:any[];

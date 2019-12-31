@@ -1,15 +1,22 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" ngif="userInRole(['admin','superuser','user'])" routerlinkactive="open">
+      <li class="nav-item" *ngIf="userInRole(['RIGHT_EDIT_USERS','RIGHT_ADD_USER','user'])" routerlinkactive="open">
         <a class="nav-link" routerLinkActive="active" routerLink = "/dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLinkActive="active" routerLink = "/roles">Roles</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink = "/sender">Sender</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink = "/reciver">Reciver</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="#">Link 3</a>
       </li>
     </ul>
+    <div>{{ time | async }}</div>
     <ul class="navbar-nav">
         <li class="nav-item">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Admin</a>

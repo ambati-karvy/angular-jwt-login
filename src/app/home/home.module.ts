@@ -7,13 +7,17 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { RolesComponent } from '../roles/roles.component';
 import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../token-interceptor.service';
+import { SenderComponent } from './sender/sender.component';
+import { RecivedComponent } from './recived/recived.component';
 
 
 @NgModule({
   declarations: [HomeComponent,
   NavigationComponent,
   DashboardComponent,
-  RolesComponent],
+  RolesComponent,
+  SenderComponent,
+  RecivedComponent],
   imports: [
     CommonModule,
     HomeRouting
