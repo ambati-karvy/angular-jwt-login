@@ -9,6 +9,7 @@ import {  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../token-interceptor.service';
 import { SenderComponent } from './sender/sender.component';
 import { RecivedComponent } from './recived/recived.component';
+import { DependanceInjectionComponent } from './dependance-injection/dependance-injection.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RecivedComponent } from './recived/recived.component';
   DashboardComponent,
   RolesComponent,
   SenderComponent,
-  RecivedComponent],
+  RecivedComponent,
+  DependanceInjectionComponent],
   imports: [
     CommonModule,
     HomeRouting

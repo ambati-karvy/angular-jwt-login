@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import './create'
 import './subscribing'
+import './asynchSubject'
 import { DataService } from './data.service';
 
 @Component({

@@ -9,10 +9,14 @@ import { DataService } from '../sender/data.service';
 export class RecivedComponent implements OnInit {
 
   message:string;
+  asyMessage = [];
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message )
+    this.dataService.currentAyncMessage.subscribe(message => {
+      
+      this.asyMessage.push(message)})
   }
 
 }
