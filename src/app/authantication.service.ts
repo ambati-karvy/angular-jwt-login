@@ -55,13 +55,15 @@ export class AuthanticationService implements OnInit{
   }
 
   login1() {
+
+    console.log(document.cookie)
     
     let formDate = new FormData();
     formDate.append("username","user@user.com");
     formDate.append("password","password");
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
 
-    this.httpClient.post("http://localhost:8080/login",formDate,{observe:'response',responseType: 'text'})
+    this.httpClient.post("http://localhost:8080/login",formDate,{observe:'response',responseType: 'text',withCredentials:true})
     .subscribe(resp => {
       //console.log(resp.headers.get('Content-Length'));
       if(resp.ok) {

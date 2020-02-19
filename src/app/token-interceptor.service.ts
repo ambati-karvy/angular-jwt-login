@@ -20,7 +20,8 @@ export class TokenInterceptorService implements HttpInterceptor{
       req = req.clone({
         setHeaders: {
             Authorization: currentUser
-        }
+        },
+        withCredentials:true
       });
     }
     return next.handle(req).pipe(
