@@ -1,4 +1,29 @@
 
 <input #name placeholder="message" type="text" />
 <button (click)="changeName(name.value)">send message</button>
+{{safeOperator?.name}}
+
+<div [ngSwitch]="validation.name">
+    <div *ngSwitchCase="'test1'">test1</div>
+    <div *ngSwitchCase="'test2'">test2</div>
+    <div *ngSwitchCase="'test3'">test3</div>
+    <div *ngSwitchDefault>Default Text</div>
+</div>
+<div>
+    <li *ngFor="let a of greeting | slice:0:4; let i=index">{{i+1}}=>{{a}}</li>
+</div>
+<div [hidden]="!validation.status">
+    <div>this is show hide properties</div>
+</div>
+<div id="elementId">
+    <h3>Jquery integration</h3>
+</div>
+<input #myname (input)="updateName(myname.value)">{{myName}}
+<br>
+<p>Interpolated value:</p>
+<div >{{htmlSnippet}}</div>
+<p>Binding of innerHTML:</p>
+<div [innerHTML]="htmlSnippet"></div>
+<input #uname>
+
 
