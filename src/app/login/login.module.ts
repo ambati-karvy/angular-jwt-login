@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     LoginRouting,
     HttpClientModule
+    
   ]
 })
 export class LoginModule { }
