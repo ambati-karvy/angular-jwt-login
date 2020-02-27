@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './auth-guard';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HomeModule } from './home/home.module';
 import { TokenInterceptorService } from './token-interceptor.service';
 
@@ -19,6 +19,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     HomeModule.forRoot()
     

@@ -10,7 +10,13 @@ import { TokenInterceptorService } from '../token-interceptor.service';
 import { SenderComponent } from './sender/sender.component';
 import { RecivedComponent } from './recived/recived.component';
 import { DependanceInjectionComponent } from './dependance-injection/dependance-injection.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookDirective } from './sender/common-properites/book.directive';
+import { WriterComponent } from './sender/common-properites/writer.component';
+import { FavoriteBookComponent } from './sender/common-properites/favorite-book.component';
+import { FriendComponent } from './sender/common-properites/friend.component';
+import { NumberComponent } from './sender/common-properites/number/number.component';
+import { OfficeComponent } from './sender/common-properites/office.component';
 
 @NgModule({
   declarations: [HomeComponent,
@@ -19,10 +25,18 @@ import { DependanceInjectionComponent } from './dependance-injection/dependance-
   RolesComponent,
   SenderComponent,
   RecivedComponent,
-  DependanceInjectionComponent],
+  DependanceInjectionComponent,
+  BookDirective,
+  WriterComponent,
+  FavoriteBookComponent,
+  FriendComponent,
+  NumberComponent,
+  OfficeComponent],
   imports: [
     CommonModule,
-    HomeRouting
+    HomeRouting,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers:[]
 })

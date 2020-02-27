@@ -25,5 +25,55 @@
 <p>Binding of innerHTML:</p>
 <div [innerHTML]="htmlSnippet"></div>
 <input #uname>
+<p></p>
+
+<h1>Hero Form</h1>
+<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="fruite.name" name="name">
+    <!-- <input type="text" class="form-control" id="name" [(ngModel)]="frutType" name="name"> -->
+    
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+</form>
+<app-writer>
+  <appBook bookId="1" bookName="Java 8 Tutorials" *ngIf="!latestBook"></appBook>
+  <appBook bookId="2" bookName="Learning Angular 4" *ngIf="latestBook"></appBook>
+</app-writer>
+<br>
+<app-favorite-book>
+    <appBook bookId="1" bookName="Hibernate 4 Tutorials"></appBook>
+    <appBook bookId="2" bookName="Spring Boot Tutorials"></appBook>
+  <app-favorite-book>
+    <appBook bookId="3" bookName="Learning JavaScript"></appBook>
+  </app-favorite-book>   
+  <app-favorite-book *ngIf="showAllBook">
+    <appBook bookId="4" bookName="Thymeleaf Tutorials"></appBook>
+    <appBook bookId="5" bookName="Android Tutorials"></appBook>
+  </app-favorite-book> 
+</app-favorite-book>
+<br>
+<app-friend>
+    <div #name *ngIf="bestFriend">Mahesh</div>
+    <div #name *ngIf="!bestFriend">Krishna</div>
+</app-friend>
+<br>
+<button (click)="increment()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+<br>
+<app-number></app-number>
+<br>
+<app-office name="karvy" address="hyderabad"></app-office><br>
+<app-office name="icici" address="nanakaramguda"></app-office><br>
+<app-office name="k-fintech" address="gowlididdi"></app-office><br>
+<app-office name="qcity" address="qcity"></app-office><br>
+<br>
+<div>
+    <div #pname>Mohit</div>
+    <div #pname>Anup</div>
+    <div #pname>Nilesh</div>
+</div>
+
 
 

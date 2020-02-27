@@ -1,9 +1,14 @@
-import { Component, OnInit, ElementRef, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, TemplateRef, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import './create'
 import './subscribing'
 import './asynchSubject'
 import { DataService } from './data.service';
+import { Country } from './country';
+import { Fruite } from './fruite';
+import { NumberComponent } from './common-properites/number/number.component';
+import { OfficeComponent } from './common-properites/office.component';
+
 
 declare var $:any;
 
@@ -12,7 +17,19 @@ declare var $:any;
   templateUrl: './sender.component.html',
   styleUrls: ['./sender.component.css']
 })
-export class SenderComponent implements OnInit {
+export class SenderComponent implements OnInit ,AfterViewInit{
+
+  countryList: Country[] = [{currency:"",name:"",population:null,weather:""}]
+  fruitesList: Fruite[] = [{color:"",name:"",cost:null,tast:""}]
+  country: Country = <Country>{name:"raghu"}
+  //fruite = new Fruite(); 
+  fruite:Fruite = <Fruite>{name:"rahul"}
+  
+
+  // country = {
+  //   "name":""
+  // }
+
   htmlSnippet = 'Template <script>alert("XSS Attack")</script> <b>Code attached</b>';
 
   message:string;
@@ -31,8 +48,8 @@ export class SenderComponent implements OnInit {
     $(document).ready(()=> {
       
       $('#elementId').css({'text-color':'blue','font-size':'150%'});
+     
     });
-
     this.dataService.currentMessage.subscribe(message => this.message=message)
   }
 
@@ -48,7 +65,43 @@ export class SenderComponent implements OnInit {
 
   @ViewChild('uname', {static: true}) uname;
 
+  onSubmit() {
+  }
+
+  latestBook = true;
+  onChangeBook() {
+   this.latestBook = (this.latestBook === true)? false : true;
+  }
+
+  showAllBook = false;
+  onShowAllBooks() {
+    this.showAllBook = (this.showAllBook === true)? false : true;
+  } 
+
+  bestFriend = true;   
+  onChangeFriend() {
+    this.bestFriend = (this.bestFriend === true)? false : true;
+  }
+
+  @ViewChild(NumberComponent,{static:true}) 
+  private numberComponent: NumberComponent;
+  increment() {
+    this.numberComponent.incrementOne();
+  }
+
+  decrement() {
+    this.numberComponent.decrementOne();
+  }
+
+  @ViewChildren(OfficeComponent) officeComponent: QueryList<OfficeComponent>;
+  @ViewChildren('pname') pnames: QueryList<ElementRef>;
+
   ngAfterViewInit() {
     console.log("------"+this.uname.nativeElement.value);
+    this.officeComponent.forEach(a => {console.log(a.address)})
+    this.pnames.forEach(a => {console.log(a.nativeElement.nativeElement)})
+    //console.log(this.officeComponent);
   }
+
+
 }
