@@ -8,6 +8,7 @@ import { Country } from './country';
 import { Fruite } from './fruite';
 import { NumberComponent } from './common-properites/number/number.component';
 import { OfficeComponent } from './common-properites/office.component';
+import { BookDirective } from './common-properites/book.directive';
 
 
 declare var $:any;
@@ -23,7 +24,7 @@ export class SenderComponent implements OnInit ,AfterViewInit{
   fruitesList: Fruite[] = [{color:"",name:"",cost:null,tast:""}]
   country: Country = <Country>{name:"raghu"}
   //fruite = new Fruite(); 
-  fruite:Fruite = <Fruite>{name:"rahul"}
+  fruite:Fruite = <Fruite>{name:"rahul",harddrive:true,color:""}
   
 
   // country = {
@@ -101,7 +102,18 @@ export class SenderComponent implements OnInit ,AfterViewInit{
     this.officeComponent.forEach(a => {console.log(a.address)})
     this.pnames.forEach(a => {console.log(a.nativeElement.nativeElement)})
     //console.log(this.officeComponent);
+    console.log("-----templateReferenceData")
+    console.log(this.karyInfoData)
+    this.bookDirective.map(bookDataAppend => bookDataAppend.viewContainerRef.createEmbeddedView(this.karyInfoData))
   }
 
+
+  allPersions = [{name:"rahgu",age:23},{name:"rahul",age:24}
+  ]
+
+  @ViewChild('karyInfo',{static:true}) karyInfoData: TemplateRef<any>;
+  @ViewChildren(BookDirective) bookDirective: QueryList<BookDirective>;
+
+  shouldSayHello = false;
 
 }

@@ -3,4 +3,5 @@ export class Fruite {
     color:string;
     cost:number;
     tast:string;
+    harddrive?:boolean;
 }

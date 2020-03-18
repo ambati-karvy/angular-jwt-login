@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, ViewContainerRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: 'appBook'
@@ -6,5 +6,14 @@ import { Directive, Input } from '@angular/core';
 export class BookDirective {
   @Input() bookId: string;
   @Input() bookName: string;
+
+  constructor(public viewContainerRef: ViewContainerRef) { }
+
+  count:number = 0
+  @HostListener('clieck',['$event.target'])
+  onclick(bnd) {
+
+    console.log("number incremented"+this.count++);
+  }
 
 }

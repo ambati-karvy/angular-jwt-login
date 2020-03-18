@@ -11,7 +11,17 @@ import { BookDirective } from './book.directive';
 	<br/><b>All Favorite Books</b>
 	<ng-template ngFor let-book [ngForOf]= "allBooks">
 	   <br/>{{book.bookId}} - {{book.bookName}}
-	</ng-template>` 
+	</ng-template>
+	
+	<br/><b>All Favorite Books2</b>
+	<li *ngFor="let book of allBooks">
+	{{book.bookId}} - {{book.bookName}}
+   </li>
+	
+	
+	` 
+	
+
 })
 export class FavoriteBookComponent {
 

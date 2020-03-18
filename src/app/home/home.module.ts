@@ -17,6 +17,7 @@ import { FavoriteBookComponent } from './sender/common-properites/favorite-book.
 import { FriendComponent } from './sender/common-properites/friend.component';
 import { NumberComponent } from './sender/common-properites/number/number.component';
 import { OfficeComponent } from './sender/common-properites/office.component';
+import { CountingDirective } from './sender/common-properites/counting.directive';
 
 @NgModule({
   declarations: [HomeComponent,
@@ -31,7 +32,8 @@ import { OfficeComponent } from './sender/common-properites/office.component';
   FavoriteBookComponent,
   FriendComponent,
   NumberComponent,
-  OfficeComponent],
+  OfficeComponent,
+  CountingDirective],
   imports: [
     CommonModule,
     HomeRouting,

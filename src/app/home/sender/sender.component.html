@@ -33,6 +33,9 @@
     <label for="name">Name</label>
     <input type="text" class="form-control" id="name" [(ngModel)]="fruite.name" name="name">
     <!-- <input type="text" class="form-control" id="name" [(ngModel)]="frutType" name="name"> -->
+    <input type="checkbox" [(ngModel)]="fruite.harddrive" [ngModelOptions]="{standalone: true}"/>
+    <input type="radio" [(ngModel)]="fruite.color"  value="male" name="gender" >
+    <input type="radio" [(ngModel)]="fruite.color"  value="female" name="gender" >
     
     </div>
     <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
@@ -74,6 +77,31 @@
     <div #pname>Anup</div>
     <div #pname>Nilesh</div>
 </div>
+<br>
+<h3>ng-template with ngFor</h3>
+<ng-template ngFor let-persion [ngForOf]="allPersions" let-i=index>
+    <p>Hello {{i+1}}--{{persion.name}}</p>
+</ng-template> 
+<br>
+
+<h3>TemplateRef and ViewContainerRef</h3>
+<ng-template #karyInfo>
+    Welcome to you.<br/>
+   Happy learning!
+</ng-template>
+<br>
+<div appBook></div>
+
+<ng-template [ngIf]="shouldSayHello" #viewTemplate>
+   hello world
+</ng-template>
+
+<div >hello</div>
+<ng-content *ngTemplateOutlet="viewTemplate"></ng-content>
+<br>
+<button appCounting>Increment</button>
+
+
 
 
 
